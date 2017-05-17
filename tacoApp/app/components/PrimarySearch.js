@@ -10,7 +10,6 @@ import {
 } from 'react-native'
 
 import YelpApi from 'v3-yelp-api'
-// import config from '../../config.js'
 
 export default class PrimarySearch extends Component {
   state = {
@@ -23,7 +22,7 @@ export default class PrimarySearch extends Component {
         this.setState({position})
       },
       (error) => alert(error),
-      {enableHighAccuracy: true, timeout: 2000, maximumAge: 1}
+      {enableHighAccuracy: true, timeout: 2000, maximumAge: 1000}
     )
   }
 
@@ -45,13 +44,14 @@ export default class PrimarySearch extends Component {
 
     let nav = this.props.navigator
 
+    // return yelp.search(params)
+    //   .then((searchResults) => {
+    //     nav.push({
+    //       ident: "Results",
+    //       data: searchResults
+    //     })
+    //   })
     return yelp.search(params)
-      // .then((searchResults) => {
-      //   nav.push({
-      //     ident: "Results",
-      //     data: searchResults
-      //   })
-      // })
       .then(data => console.log(data))
       .catch(err => err)
   }
@@ -61,9 +61,10 @@ export default class PrimarySearch extends Component {
       <View style={styles.container}>
         <Image source={require('../../images/taco.png')}
         style={{height: 300, width: 300}} />
-        <TouchableOpacity style={{borderRadius: 7, padding: 10, backgroundColor: 'rgb(139, 33, 61)'}}
-        onPress={this.getData.bind(this)}>
-        <Text style={{fontSize: 15, color: 'white'}}>TacoTime</Text>
+        <TouchableOpacity
+          style={{borderRadius: 7, padding: 10, backgroundColor: 'rgb(139, 33, 61)'}}
+          onPress={this.getData.bind(this)}>
+          <Text style={{fontSize: 15, color: 'white'}}>TacoTime</Text>
         </TouchableOpacity>
       </View>
     )

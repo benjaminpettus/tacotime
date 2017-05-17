@@ -7,7 +7,9 @@ import PrimarySearch from "../components/PrimarySearch"
 class AppNavigator extends Component {
 
   renderScene(route, navigator) {
+
     let globalNavigatorProps = { navigator }
+
     switch(route.ident) {
       case "PrimarySearch":
         return (
@@ -16,6 +18,10 @@ class AppNavigator extends Component {
       case "Results":
         return (
           <Results { ...globalNavigatorProps } data={route.data} />
+        )
+      default:
+        return (
+          <Text> {`What happened? ${route}`}></Text>
         )
     }
   }

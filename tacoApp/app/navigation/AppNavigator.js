@@ -2,7 +2,7 @@ import React, { Component, Text } from 'react'
 import { Navigator } from 'react-native-deprecated-custom-components'
 
 import PrimarySearch from "../components/PrimarySearch"
-// import Results from "../components/Results"
+import Results from "../components/Results"
 
 class AppNavigator extends Component {
 

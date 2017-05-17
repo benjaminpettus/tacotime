@@ -10,6 +10,7 @@ import {
 } from 'react-native'
 
 import YelpApi from 'v3-yelp-api'
+import config from '../../config'
 
 export default class PrimarySearch extends Component {
   state = {
@@ -28,8 +29,8 @@ export default class PrimarySearch extends Component {
 
   getData() {
     const credentials = {
-      appId: process.env.CONSUMER_KEY,
-      appSecret: process.env.CONSUMER_SECRET
+      appId: config.consumer_key,
+      appSecret: config.consumer_secret
     }
     const yelp = new YelpApi(credentials)
 
@@ -39,21 +40,25 @@ export default class PrimarySearch extends Component {
     let params = {
       term: 'tacos',
       location: latlng,
-      limit: '30'
+      limit: '50'
     }
 
     let nav = this.props.navigator
 
+    console.log(yelp)
+
     // return yelp.search(params)
-    //   .then((searchResults) => {
-    //     nav.push({
-    //       ident: "Results",
-    //       data: searchResults
-    //     })
-    //   })
+    //   .then(data => console.log(data))
+    //   .catch(err => err)
+
     return yelp.search(params)
-      .then(data => console.log(data))
-      .catch(err => err)
+      .then((searchResults) => {
+        nav.push({
+          ident: "Results",
+          data: searchResults
+        })
+      })
+
   }
 
   render() {

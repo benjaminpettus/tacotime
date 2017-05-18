@@ -9,6 +9,8 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+import { Card, Button } from 'react-native-material-design'
+
 import YelpApi from 'v3-yelp-api'
 import config from '../../config'
 

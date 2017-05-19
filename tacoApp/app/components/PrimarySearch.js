@@ -9,10 +9,10 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-import { Card, Button } from 'react-native-material-design'
-
 import YelpApi from 'v3-yelp-api'
 import config from '../../config'
+import { Card, Button } from 'react-native-material-design'
+
 
 export default class PrimarySearch extends Component {
   state = {
@@ -49,9 +49,6 @@ export default class PrimarySearch extends Component {
 
     console.log(yelp)
 
-    // return yelp.search(params)
-    //   .then(data => console.log(data))
-    //   .catch(err => err)
 
     return yelp.search(params)
       .then((searchResults) => {

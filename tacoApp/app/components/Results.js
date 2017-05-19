@@ -9,7 +9,14 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-import { Card , Button } from 'react-native-material-design'
+// import { Card , Button } from 'react-native-material-design'
+import {
+  Card,
+  CardImage,
+  CardTitle,
+  CardContent,
+  CardAction
+} from 'react-native-card-view';
 
 class Results extends Component {
   constructor(props) {
@@ -27,7 +34,7 @@ class Results extends Component {
     return (
       <View>
 
-      <Text style={styles.header}>Results</Text>
+      <Text style={styles.header}>Tacos Near You</Text>
         <ListView
           style={{marginTop: 100}}
           initialListSize={10}
@@ -40,15 +47,18 @@ class Results extends Component {
 
   renderResult(result) {
     return (
-
-        <Card style={styles.resultRow} onPress={() => Linking.openURL(result.url)}>
-          <Card.Media image={<Image source={{uri: result.image_url}} style={styles.stretch} />} overlay />
-          <Card.Body>
-            <Text style={{fontWeight: 'bold'}}>{`${result.name}`}</Text>
-            <Text>Rating:{`${result.rating}`}</Text>
+        <Card onPress={() => Linking.openURL(result.url)}>
+          <CardImage>
+            <Image
+              style={styles.stretch}
+              source={{uri: result.image_url}} />
+          </CardImage>
+          <CardContent>
+            <Text style={{fontSize: 20, fontWeight: 'bold'}}>{`${result.name}`}</Text>
             <Text>Price:{`${result.price}`}</Text>
+            <Text>Rating:{`${result.rating}`}</Text>
             <Text>Phone:{`${result.display_phone}`}</Text>
-          </Card.Body>
+          </CardContent>
         </Card>
     )
   }
@@ -68,8 +78,13 @@ const styles = StyleSheet.create({
     padding: 5
   },
   stretch: {
-    width: 100
+    width: 365,
+    height: 200
+  },
+  content: {
+
   }
+
 });
 
 

@@ -1,12 +1,13 @@
 import 'react-native';
 import React from 'react';
-import Index from '../index.ios.js';
+import Results from '../app/components/Results'
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
 
 test('renders correctly', () => {
   const tree = renderer.create(
-    <Index />
+    <Results />
   );
+  expect(tree).toMatchSnapshot();
 });
